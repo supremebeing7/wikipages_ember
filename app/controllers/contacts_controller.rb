@@ -1,12 +1,13 @@
 class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
+    @contact = Contact.new
     render('contacts/index.html.erb')
   end
 
   def new
     @contact = Contact.new
-    render('contacts/new.html.erb')
+    render('contacts/index.html.erb')
   end
 
   def create
@@ -16,7 +17,7 @@ class ContactsController < ApplicationController
     if @contact.save
       render('contacts/success.html.erb')
     else
-      render('contacts/new.html.erb')
+      render('contacts/index.html.erb')
     end
   end
 

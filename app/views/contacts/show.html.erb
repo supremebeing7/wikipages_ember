@@ -3,45 +3,57 @@
 <p>Phones:</p>
 
 <ul>
-  <% @contact.phones.each do |phone| %>
-    <li>
-      <%= phone.number %> |
-      <a href="/contacts/<%= @contact.id %>/phones/<%= phone.id %>/edit">Edit</a> |
-      <a href="/contacts/<%= @contact.id %>/phones/<%= phone.id %>"
-         data-confirm="You sure?"
-         data-method="delete"
-         rel="nofollow">Delete</a>
-    </li>
+  <% if @contact.phones.count == 0 %>
+    <li>No phones to display</li>
+  <% else %>
+    <% @contact.phones.each do |phone| %>
+      <li>
+        <%= phone.number %> |
+        <a href="/contacts/<%= @contact.id %>/phones/<%= phone.id %>/edit">Edit</a> |
+        <a href="/contacts/<%= @contact.id %>/phones/<%= phone.id %>"
+           data-confirm="You sure?"
+           data-method="delete"
+           rel="nofollow">Delete</a>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 
 <p>Emails:</p>
 
 <ul>
-  <% @contact.emails.each do |email| %>
-    <li>
-      <%= email.email %> |
-      <a href="/contacts/<%= @contact.id %>/emails/<%= email.id %>/edit">Edit</a> |
-      <a href="/contacts/<%= @contact.id %>/emails/<%= email.id %>"
-         data-confirm="You sure?"
-         data-method="delete"
-         rel="nofollow">Delete</a>
-    </li>
+  <% if @contact.emails.count == 0 %>
+    <li>No emails to display</li>
+  <% else %>
+    <% @contact.emails.each do |email| %>
+      <li>
+        <%= email.email %> |
+        <a href="/contacts/<%= @contact.id %>/emails/<%= email.id %>/edit">Edit</a> |
+        <a href="/contacts/<%= @contact.id %>/emails/<%= email.id %>"
+           data-confirm="You sure?"
+           data-method="delete"
+           rel="nofollow">Delete</a>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 
 <p>Addresses:</p>
 
 <ul>
-  <% @contact.addresses.each do |address| %>
-    <li>
-      <%= address.address %> |
-      <a href="/contacts/<%= @contact.id %>/addresses/<%= address.id %>/edit">Edit</a> |
-      <a href="/contacts/<%= @contact.id %>/addresses/<%= address.id %>"
-         data-confirm="You sure?"
-         data-method="delete"
-         rel="nofollow">Delete</a>
-    </li>
+  <% if @contact.addresses.count == 0 %>
+    <li>No addresses to display</li>
+  <% else %>
+    <% @contact.addresses.each do |address| %>
+      <li>
+        <%= address.address %> |
+        <a href="/contacts/<%= @contact.id %>/addresses/<%= address.id %>/edit">Edit</a> |
+        <a href="/contacts/<%= @contact.id %>/addresses/<%= address.id %>"
+           data-confirm="You sure?"
+           data-method="delete"
+           rel="nofollow">Delete</a>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 
