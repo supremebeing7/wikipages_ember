@@ -1,0 +1,6 @@
+<h1>Phone for <%= Contact.find(@phone.contact_id).name %> deleted</h1>
+
+<p><a href="/contacts">See all the contacts</a></p>
+<p><a href="/contacts/new">Create a new contact</a></p>
+<p><a href="/contacts/<%= @phone.contact_id %>">View details for <%= Contact.find(@phone.contact_id).name %></a></p>
+<p><a href="/contacts/<%= @phone.contact_id %>/phones/new">Create a new phone for <%= Contact.find(@phone.contact_id).name %></a></p>
