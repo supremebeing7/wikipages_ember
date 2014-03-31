@@ -1,0 +1,16 @@
+<h1>Add a new email</h1>
+
+<% if @email.errors.any? %>
+  <h3>Please fix these errors:</h3>
+  <ul>
+    <% @email.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="/contacts/<%= @email.contact.id %>/emails" method="post">
+  <label for="email">Email: </label>
+  <input id="email" name="email" type="text" value="<%= @email.email %>">
+  <button>Add email</button>
+</form>

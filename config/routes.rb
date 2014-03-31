@@ -13,4 +13,10 @@ Wikipages::Application.routes.draw do
   match('contacts/:contact_id/phones/:id/edit', {:via => :get, :to => 'phones#edit'})
   match('contacts/:contact_id/phones/:id', {:via => [:patch, :put], :to => 'phones#update'})
   match('contacts/:contact_id/phones/:id', {:via => :delete, :to => 'phones#destroy'})
+
+  match('contacts/:contact_id/emails/new', {:via => :get, :to => 'emails#new'})
+  match('contacts/:contact_id/emails', {:via => :post, :to => 'emails#create'})
+
+  match('contacts/:contact_id/emails/:id', {:via => :delete, :to => 'emails#destroy'})
+
 end
