@@ -5,4 +5,5 @@ describe Contact do
 
   it { should have_many :phones }
   it { should have_many :emails }
+  it { should have_many :addresses }
 end

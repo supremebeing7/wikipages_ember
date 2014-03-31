@@ -3,7 +3,7 @@
 <% if @phone.errors.any? %>
   <h3>Please fix these errors:</h3>
   <ul>
-    <% @phone.errors.full_message.each do |message| %>
+    <% @phone.errors.full_messages.each do |message| %>
     <li><%= message %></li>
     <% end %>
   </ul>

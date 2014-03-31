@@ -30,8 +30,24 @@
   <% end %>
 </ul>
 
+<p>Addresses:</p>
+
+<ul>
+  <% @contact.addresses.each do |address| %>
+    <li>
+      <%= address.address %> |
+      <a href="/contacts/<%= @contact.id %>/addresses/<%= address.id %>/edit">Edit</a> |
+      <a href="/contacts/<%= @contact.id %>/addresses/<%= address.id %>"
+         data-confirm="You sure?"
+         data-method="delete"
+         rel="nofollow">Delete</a>
+    </li>
+  <% end %>
+</ul>
+
 <a href="/contacts/<%= @contact.id %>/phones/new">Add phone</a>
 <a href="/contacts/<%= @contact.id %>/emails/new">Add email</a>
+<a href="/contacts/<%= @contact.id %>/addresses/new">Add address</a>
 
 <p><a href="/contacts/<%= @contact.id %>/edit">Edit Contact</a></p>
 <p><a href="/contacts/<%= @contact.id %>"

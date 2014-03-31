@@ -8,11 +8,25 @@ class EmailsController < ApplicationController
 
   def create
     @email = Email.new(:email => params[:email],
-                                :contact_id => params[:contact_id])
+                        :contact_id => params[:contact_id])
     if @email.save
       render('/emails/success.html.erb')
     else
       render('/emails/new.html.erb')
+    end
+  end
+
+  def edit
+    @email = Email.find(params[:id])
+    render('/emails/edit.html.erb')
+  end
+
+  def update
+    @email = Email.find(params[:id])
+    if @email.update(:email => params[:email])
+      render('/emails/success.html.erb')
+    else
+      render('/emails/edit.html.erb')
     end
   end
 

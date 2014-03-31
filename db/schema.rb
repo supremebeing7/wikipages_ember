@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331185154) do
+ActiveRecord::Schema.define(version: 20140331205140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: true do |t|
+    t.integer "contact_id"
+    t.string  "address"
+  end
 
   create_table "contacts", force: true do |t|
     t.string "name"
@@ -28,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140331185154) do
   end
 
   create_table "phones", force: true do |t|
-    t.integer "number"
+    t.integer "number",     limit: 8
     t.integer "contact_id"
   end
 

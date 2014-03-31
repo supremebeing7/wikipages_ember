@@ -1,0 +1,6 @@
+<h1>Address for <%= Contact.find(@address.contact_id).name %> deleted</h1>
+
+<p><a href="/contacts">See all the contacts</a></p>
+<p><a href="/contacts/new">Create a new contact</a></p>
+<p><a href="/contacts/<%= @address.contact_id %>">View details for <%= Contact.find(@address.contact_id).name %></a></p>
+<p><a href="/contacts/<%= @address.contact_id %>/addresss/new">Create a new address for <%= Contact.find(@address.contact_id).name %></a></p>
