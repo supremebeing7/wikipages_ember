@@ -1,50 +1,45 @@
 class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
-    @contact = Contact.new
-    render('contacts/index.html.erb')
-  end
-
-  def new
-    @contact = Contact.new
-    render('contacts/index.html.erb')
+    render json: @contacts
   end
 
   def create
-    @contact = Contact.new(:name => params[:name],
-                              :phone => params[:phone],
-                              :email => params[:email])
+    @contact = Contact.new(contact_params)
     if @contact.save
-      render('contacts/success.html.erb')
+      render json: @contact, status: 201
     else
-      render('contacts/index.html.erb')
+      render json: @contact.errors, status: 422
     end
   end
 
-  def edit
+  def show
     @contact = Contact.find(params[:id])
-    render('contacts/edit.html.erb')
+    render json: @contact
   end
 
   def update
     @contact = Contact.find(params[:id])
-    if @contact.update(:name => params[:name],
-                        :email => params[:email],
-                        :phone => params[:phone])
-      render('contacts/success.html.erb')
+    if @contact.update(contact_params)
+      head :no_content
     else
-      render('contacts/edit.html.erb')
+      render json: @contact.errors, status: 422
     end
   end
 
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy
-    render('contacts/destroy.html.erb')
+    head :no_content
   end
 
-  def show
-    @contact = Contact.find(params[:id])
-    render('contacts/show.html.erb')
+private
+
+  def contact_params
+    params.fetch(:contact).permit(:name, :phone, :email)
+  end
+
+  def default_serializer_options
+    {root: false}
   end
 end
