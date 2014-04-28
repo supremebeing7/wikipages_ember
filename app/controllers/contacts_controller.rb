@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
     if @contact.save
       render json: @contact, status: 201
     else
-      render json: @contact.errors, status: 422
+      render json: {:errors => @contact.errors}, status: 422
     end
   end
 
@@ -23,7 +23,7 @@ class ContactsController < ApplicationController
     if @contact.update(contact_params)
       head :no_content
     else
-      render json: @contact.errors, status: 422
+      render json: {:errors => @contact.errors}, status: 422
     end
   end
 
@@ -39,7 +39,7 @@ private
     params.fetch(:contact).permit(:name, :phone, :email)
   end
 
-  def default_serializer_options
-    {root: false}
-  end
+  # def default_serializer_options
+  #   {root: false}
+  # end
 end
